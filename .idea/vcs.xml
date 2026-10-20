@@ -4,6 +4,5 @@
     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/TripoSR" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../unity" vcs="Git" />
   </component>
 </project>
