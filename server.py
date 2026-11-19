@@ -2,7 +2,7 @@
 FastAPI wrapper around triposr_helpers.py.
 
 Run from python-server-part\ in the `triposer` env:
-    uvicorn triposr_server:app --host 0.0.0.0 --port 8000
+    uvicorn server:app --host 0.0.0.0 --port 8000
 
 POST /reconstruct   multipart form field "file" (PNG/JPG)
     optional query params:
@@ -80,6 +80,9 @@ def reconstruct(
 
     # Step 4: serialize the mesh to binary glTF (GLB)
     glb_bytes = mesh.export(file_type="glb")
+
+    assert isinstance(glb_bytes, (bytes, bytearray)), "export did not return bytes"
+    assert glb_bytes[:4] == b"glTF", "missing GLB magic header"
 
     log.info(
         "reconstruct: %d faces, %d KB, total %.2f s",
